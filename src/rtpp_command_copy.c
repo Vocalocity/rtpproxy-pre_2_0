@@ -38,13 +38,10 @@
 #include "rtpp_session.h"
 #include "rtpp_util.h"
 
-int
-handle_copy(struct cfg *cf, struct rtpp_session *spa, int idx, char *rname,
+int handle_copy(struct cfg *cf, struct rtpp_session *spa, int idx, char *rname,
   int record_single_file)
 {
-    int remote;
-
-    remote = (rname != NULL && strncmp("udp:", rname, 4) == 0)? 1 : 0;
+    int remote = (rname != NULL && strncmp("udp:", rname, 4) == 0)? 1 : 0;
 
     if (remote == 0 && (record_single_file != 0 || spa->record_single_file != 0)) {
         if (spa->rrcs[idx] != NULL)
